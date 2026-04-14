@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <title>스도쿠</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="app">
+        <!-- 헤더 -->
+        <header>
+            <h1>스도쿠</h1>
+            <div class="difficulty-tabs">
+                <button class="tab active" data-difficulty="advanced">고급</button>
+                <button class="tab" data-difficulty="expert">최고급</button>
+            </div>
+        </header>
+
+        <!-- 게임 상태바 -->
+        <div class="status-bar">
+            <div class="status-item">
+                <span class="status-icon">❌</span>
+                <span id="mistakes">0/3</span>
+            </div>
+            <div class="status-item">
+                <span class="status-icon">⏱</span>
+                <span id="timer">00:00</span>
+            </div>
+            <div class="status-item">
+                <span class="status-icon">💡</span>
+                <span id="hints-left">3</span>
+            </div>
+            <div class="status-item">
+                <span class="status-icon">📊</span>
+                <span id="progress">0%</span>
+            </div>
+        </div>
+
+        <!-- 스도쿠 보드 -->
+        <div id="board"></div>
+
+        <!-- 컨트롤 버튼 -->
+        <div class="controls">
+            <button class="control-btn" id="btn-undo">
+                <span class="ctrl-icon">↩</span>
+                <span>실행취소</span>
+            </button>
+            <button class="control-btn" id="btn-erase">
+                <span class="ctrl-icon">⌫</span>
+                <span>지우기</span>
+            </button>
+            <button class="control-btn" id="btn-notes" data-active="false">
+                <span class="ctrl-icon">✏</span>
+                <span>메모</span>
+            </button>
+            <button class="control-btn" id="btn-hint">
+                <span class="ctrl-icon">💡</span>
+                <span>힌트</span>
+            </button>
+        </div>
+
+        <!-- 숫자 패드 -->
+        <div class="numpad">
+            <button class="num-btn" data-num="1">1</button>
+            <button class="num-btn" data-num="2">2</button>
+            <button class="num-btn" data-num="3">3</button>
+            <button class="num-btn" data-num="4">4</button>
+            <button class="num-btn" data-num="5">5</button>
+            <button class="num-btn" data-num="6">6</button>
+            <button class="num-btn" data-num="7">7</button>
+            <button class="num-btn" data-num="8">8</button>
+            <button class="num-btn" data-num="9">9</button>
+        </div>
+
+        <!-- 새 게임 버튼 -->
+        <button class="new-game-btn" id="btn-new-game">새 게임</button>
+    </div>
+
+    <!-- 게임 오버 모달 -->
+    <div class="modal-overlay" id="modal-gameover">
+        <div class="modal">
+            <h2>게임 오버</h2>
+            <p>실수 3회로 게임이 종료되었습니다.</p>
+            <button class="modal-btn" id="btn-retry">다시 시도</button>
+        </div>
+    </div>
+
+    <!-- 완료 모달 -->
+    <div class="modal-overlay" id="modal-complete">
+        <div class="modal modal-success">
+            <div class="confetti">🎉</div>
+            <h2>축하합니다!</h2>
+            <p id="complete-msg"></p>
+            <button class="modal-btn" id="btn-new-after-win">새 게임</button>
+        </div>
+    </div>
+
+    <!-- 로딩 오버레이 -->
+    <div class="modal-overlay" id="loading-overlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>퍼즐 생성 중...</p>
+        </div>
+    </div>
+
+    <script src="sudoku.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
